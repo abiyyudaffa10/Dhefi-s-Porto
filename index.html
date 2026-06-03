@@ -24,7 +24,8 @@
   .hero p{font-size:1.12rem;color:var(--ink-2);line-height:1.6;margin:22px 0 0;max-width:46ch;margin-left:auto;margin-right:auto;}
   .avatar{width:90px;height:90px;border-radius:999px;border:2.5px solid var(--ink);object-fit:cover;box-shadow:var(--shadow-hard);}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(280px,420px));gap:20px;max-width:900px;margin:0 auto;padding:0 40px 80px;justify-content:center;}
+  @media(max-width:680px){.grid{grid-template-columns:1fr;}}
   .card{border:1.5px solid var(--ink);border-radius:var(--r-lg);background:var(--white);box-shadow:var(--shadow-hard);padding:28px 28px 24px;display:flex;flex-direction:column;gap:12px;transition:transform var(--dur-fast) var(--ease-funk),box-shadow var(--dur-fast) var(--ease-funk);}
   .card:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-hard-lg);}
   .card-tag{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);}
@@ -70,33 +71,6 @@
     <div class="card-link">Open dashboard</div>
   </a>
 
-  <a class="card" href="deck/index.html">
-    <div class="card-tag">Presentation</div>
-    <h2>Portfolio Deck</h2>
-    <p>Slide deck walkthrough — case studies and highlights from HR internships.</p>
-    <div class="card-link">Open deck</div>
-  </a>
-
-  <a class="card" href="slides/index.html">
-    <div class="card-tag">Slides</div>
-    <h2>Slide Template</h2>
-    <p>Branded slide presentation with keyboard navigation and dot controls.</p>
-    <div class="card-link">Open slides</div>
-  </a>
-
-  <a class="card" href="docs/Dhefi_Dwicahyani_Fikri_CV_APA_Revised.pdf" target="_blank">
-    <div class="card-tag">Document</div>
-    <h2>CV / Résumé</h2>
-    <p>Full APA-formatted curriculum vitae — downloadable PDF.</p>
-    <div class="card-link">Download CV</div>
-  </a>
-
-  <a class="card" href="design/brand-logo.html" target="_blank">
-    <div class="card-tag">Design System</div>
-    <h2>FOLK Preview</h2>
-    <p>Design system component previews — colours, type, buttons, cards, and more.</p>
-    <div class="card-link">Browse tokens</div>
-  </a>
 
 </div>
 
