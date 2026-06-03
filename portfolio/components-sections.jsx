@@ -57,7 +57,7 @@ function Hero() {
           </div>
         </div>
         <div className="hero-photo reveal">
-          <div className="frame"><img src="../assets/Dhefiberdiri.jpg" alt="Dhefi Dwicahyani" /></div>
+          <div className="frame"><img src="../assets/Dhefiduduk.jpg" alt="Dhefi Dwicahyani" /></div>
           <div className="badge badge-status"><span className="d">●</span> Available · Q2 2026</div>
           <div className="badge badge-loc"><Icon name="map-pin" size={14} /> Padalarang</div>
         </div>
