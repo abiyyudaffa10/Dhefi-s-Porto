@@ -4,7 +4,7 @@ const THUMB_COLORS = ['var(--teal)', 'var(--orange)', 'var(--gold)', 'var(--pink
 
 const WORK = [
   { tag: 'HR OPS · PLATFORM', title: 'The HR Intervention System', org: 'MagangHub', year: '2025–26',
-    desc: 'Helped build a platform to track HR workflows and lift administrative productivity across teams.' },
+    desc: 'Built a personal tracking platform to manage 100+ candidates — logging fit scores, pipeline stages, and progress notes to make screening faster and reporting more accurate.' },
   { tag: 'PAYROLL · DATA', title: 'Timesheet & overtime for 61', org: 'PT. Santai Berkualitas', year: '2025–26',
     desc: 'Compiled monthly timesheet and overtime cost data for 61 employees to keep payroll accurate and on time.' },
   { tag: 'FIELD RESEARCH', title: 'Community interviews, Sindanglaut', org: 'PT. Kharisma Sejahtera', year: '2025',
