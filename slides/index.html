@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhefi. — Slide Template</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="icon" href="../assets/mark.svg">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0e0c0b;font-family:var(--font-body);overflow:hidden;height:100vh;}
+  .stage{position:fixed;inset:0;display:grid;place-items:center;}
+  .frame-wrap{width:1280px;height:720px;transform-origin:center center;box-shadow:0 30px 80px rgba(0,0,0,.5);border-radius:6px;overflow:hidden;background:var(--paper);}
+  iframe{width:1280px;height:720px;border:none;display:block;}
+  /* controls — OUTSIDE the scaled element */
+  .ctrl{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:14px;
+    background:rgba(28,25,22,.86);backdrop-filter:blur(8px);border:1.5px solid #ffffff22;border-radius:var(--r-pill);padding:8px 10px;}
+  .ctrl button{width:40px;height:40px;border-radius:999px;border:none;background:#ffffff14;color:var(--paper);font-size:1.2rem;cursor:pointer;display:grid;place-items:center;transition:background .15s;}
+  .ctrl button:hover{background:var(--orange);}
+  .ctrl .count{font-family:var(--font-mono);font-size:.82rem;color:var(--paper);min-width:64px;text-align:center;letter-spacing:.04em;}
+  .dots{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;}
+  .dots i{width:9px;height:9px;border-radius:999px;background:#ffffff33;cursor:pointer;transition:background .15s,transform .15s;}
+  .dots i.on{background:var(--orange);transform:scale(1.25);}
+  .hint{position:fixed;bottom:26px;right:24px;z-index:10;font-family:var(--font-mono);font-size:.72rem;color:#ffffff55;}
+</style>
+</head>
+<body>
+  <div class="stage"><div class="frame-wrap" id="wrap"><iframe id="frame" src="01-title.html"></iframe></div></div>
+  <div class="dots" id="dots"></div>
+  <div class="ctrl">
+    <button id="prev" aria-label="Previous">‹</button>
+    <span class="count" id="count">01 / 06</span>
+    <button id="next" aria-label="Next">›</button>
+  </div>
+  <div class="hint">← → to navigate</div>
+<script>
+  const SLIDES = ['01-title.html','02-section.html','03-stats.html','04-quote.html','05-comparison.html','06-closing.html'];
+  const frame = document.getElementById('frame'), count = document.getElementById('count'),
+        wrap = document.getElementById('wrap'), dotsEl = document.getElementById('dots');
+  let i = Math.max(0, Math.min(SLIDES.length-1, parseInt(localStorage.getItem('folk-slide')||'0',10)));
+
+  SLIDES.forEach((_,n)=>{const d=document.createElement('i');d.onclick=()=>go(n);dotsEl.appendChild(d);});
+
+  function fit(){
+    const s = Math.min(window.innerWidth/1280, window.innerHeight/720)*0.92;
+    wrap.style.transform = `scale(${s})`;
+  }
+  function render(){
+    frame.src = SLIDES[i];
+    count.textContent = String(i+1).padStart(2,'0')+' / '+String(SLIDES.length).padStart(2,'0');
+    [...dotsEl.children].forEach((d,n)=>d.classList.toggle('on', n===i));
+    localStorage.setItem('folk-slide', i);
+  }
+  function go(n){ i = (n+SLIDES.length)%SLIDES.length; render(); }
+  document.getElementById('prev').onclick=()=>go(i-1);
+  document.getElementById('next').onclick=()=>go(i+1);
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' ') go(i+1);
+    if(e.key==='ArrowLeft') go(i-1);
+  });
+  window.addEventListener('resize', fit);
+  fit(); render();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* FOLK Design System — shared design tokens */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap');
+
+:root {
+  /* ── Typography ─────────────────────────────────────── */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+
+  /* ── Neutral palette ────────────────────────────────── */
+  --white:          #FFFFFF;
+  --paper:          #F7F3EC;
+  --paper-2:        #EDE8DF;
+  --card:           #EDE8DF;
+  --hairline:       #D8D2C6;
+
+  --ink:            #1C1915;
+  --ink-2:          #3C3730;
+  --ink-soft:       #6A6358;
+  --ink-mute:       #9B9188;
+  --ink-bg:         #1C1915;
+  --ink-bg-2:       #2A2620;
+  --ink-bg-3:       #3A3630;
+  --on-dark:        #F7F3EC;
+  --on-dark-soft:   rgba(247,243,236,.62);
+
+  /* ── Accent palette ─────────────────────────────────── */
+  --orange:         #E8572A;
+  --orange-deep:    #C4441B;
+
+  --teal:           #2B7D6F;
+  --teal-deep:      #1E5C52;
+  --teal-soft:      rgba(43,125,111,.13);
+
+  --gold:           #C99A3C;
+  --gold-soft:      rgba(201,154,60,.16);
+
+  --pink:           #D4608A;
+  --pink-soft:      rgba(212,96,138,.13);
+
+  /* ── Shape ──────────────────────────────────────────── */
+  --bw:       1.5px;
+  --r-sm:     6px;
+  --r-md:     10px;
+  --r-lg:     16px;
+  --r-xl:     22px;
+  --r-pill:   999px;
+
+  /* ── Shadow ─────────────────────────────────────────── */
+  --shadow-soft:    0 2px 8px rgba(28,25,21,.08);
+  --shadow-hard:    3px 3px 0 #1C1915;
+  --shadow-hard-lg: 5px 5px 0 #1C1915;
+
+  /* ── Motion ─────────────────────────────────────────── */
+  --dur-fast:  .14s;
+  --ease-funk: cubic-bezier(.34,1.56,.64,1);
+}

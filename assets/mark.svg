@@ -1,0 +1,26 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FOLK mark">
+  
+  <g transform="translate(60 60)">
+    <g fill="#E8572A">
+      
+      <g>
+        <rect x="-7" y="-50" width="14" height="40" rx="7"></rect>
+        <rect x="-7" y="10" width="14" height="40" rx="7"></rect>
+      </g>
+      <g transform="rotate(90)">
+        <rect x="-7" y="-50" width="14" height="40" rx="7"></rect>
+        <rect x="-7" y="10" width="14" height="40" rx="7"></rect>
+      </g>
+      <g transform="rotate(45)">
+        <rect x="-6" y="-46" width="12" height="36" rx="6"></rect>
+        <rect x="-6" y="10" width="12" height="36" rx="6"></rect>
+      </g>
+      <g transform="rotate(135)">
+        <rect x="-6" y="-46" width="12" height="36" rx="6"></rect>
+        <rect x="-6" y="10" width="12" height="36" rx="6"></rect>
+      </g>
+    </g>
+    <circle cx="0" cy="0" r="13" fill="#1C1916"></circle>
+    <circle cx="0" cy="0" r="5" fill="#F4ECDB"></circle>
+  </g>
+</svg>

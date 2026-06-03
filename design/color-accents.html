@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;background:var(--paper);font-family:var(--font-mono);color:var(--ink);padding:24px 30px;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .chip .box{height:64px;border-radius:14px;border:1.5px solid var(--ink);display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;}
+  .soft{height:30px;border-radius:0 0 12px 12px;margin:-1.5px;}
+  .nm{font-size:12px;margin-top:8px;font-weight:700;}
+  .hx{font-size:11px;color:var(--ink-mute);}
+</style>
+<body>
+  <div class="grid">
+    <div class="chip"><div class="box" style="background:var(--orange)"></div><div class="soft" style="background:var(--orange-soft)"></div><div class="nm">orange</div><div class="hx">#E8572A · primary</div></div>
+    <div class="chip"><div class="box" style="background:var(--teal)"></div><div class="soft" style="background:var(--teal-soft)"></div><div class="nm">teal</div><div class="hx">#1F6E5C</div></div>
+    <div class="chip"><div class="box" style="background:var(--gold)"></div><div class="soft" style="background:var(--gold-soft)"></div><div class="nm">gold</div><div class="hx">#E6A92E</div></div>
+    <div class="chip"><div class="box" style="background:var(--pink)"></div><div class="soft" style="background:var(--pink-soft)"></div><div class="nm">pink</div><div class="hx">#E87EA1 · pop</div></div>
+  </div>
+</body>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dhefi Dwicahyani — Portfolio Deck</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="icon" href="../assets/mark.svg">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#0e0c0b;font-family:var(--font-body);}
+  deck-stage:not(:defined){visibility:hidden;}
+  deck-stage{background:#0e0c0b;}
+
+  /* ============================ shared slide skin ============================ */
+  .slide{
+    background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    padding:120px 140px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+  }
+  .slide.dark{background:var(--ink-bg);color:var(--on-dark);}
+  .slide.teal{background:var(--teal);color:var(--paper);}
+  .slide.orange{background:var(--orange);color:var(--white);}
+  .slide.card-bg{background:var(--card);}
+
+  /* paper grain */
+  .slide::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .s-kicker{font-family:var(--font-mono);font-weight:700;font-size:1.4rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+  .slide.dark .s-kicker,.slide.teal .s-kicker,.slide.orange .s-kicker{color:var(--gold);}
+  .s-title{font-family:var(--font-display);font-weight:800;font-size:7.2rem;line-height:.98;letter-spacing:-.03em;margin:0;}
+  .s-title em{font-style:italic;color:var(--orange);}
+  .slide.dark .s-title em,.slide.orange .s-title em{color:var(--gold);}
+  .s-sub{font-size:2.1rem;line-height:1.4;color:var(--ink-2);max-width:28ch;}
+  .slide.dark .s-sub{color:var(--on-dark-soft);}
+  .slide.teal .s-sub,.slide.orange .s-sub{color:rgba(244,236,219,.92);}
+
+  .s-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);}
+  .s-brand{display:flex;align-items:center;gap:16px;font-family:var(--font-display);font-weight:800;font-size:2.2rem;letter-spacing:-.03em;}
+  .s-brand .dot{color:var(--orange);}
+  .s-brand img{width:46px;height:46px;}
+  .slide.dark .s-brand .dot,.slide.teal .s-brand .dot,.slide.orange .s-brand .dot{color:var(--gold);}
+  .s-pageno{font-size:1.2rem;color:var(--ink-mute);}
+  .slide.dark .s-pageno,.slide.teal .s-pageno,.slide.orange .s-pageno{color:rgba(244,236,219,.7);}
+
+  .mark-deco{position:absolute;opacity:.12;pointer-events:none;}
+
+  /* ============================ per-slide helpers ============================ */
+  .pill{font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.04em;border-radius:var(--r-pill);padding:9px 18px;border:2px solid var(--ink);background:var(--card);display:inline-flex;align-items:center;gap:10px;}
+  .pill.green{background:var(--teal-soft);}
+  .pill.gold{background:var(--gold-soft);}
+  .pill.pink{background:var(--pink-soft);}
+  .pill.orange{background:var(--orange-soft);}
+
+  .num{font-family:var(--font-display);font-weight:800;line-height:.9;letter-spacing:-.03em;}
+  .num.orange{color:var(--orange);}.num.teal{color:var(--teal);}.num.gold{color:var(--gold);}.num.pink{color:var(--pink);}
+
+  .stat-label{font-family:var(--font-mono);font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-mute);}
+  .slide.dark .stat-label{color:var(--on-dark-soft);}
+
+  .tl-row{display:grid;grid-template-columns:280px 1fr;gap:48px;padding:24px 0;border-top:2px solid var(--hairline);}
+  .tl-when{font-family:var(--font-mono);font-size:1.1rem;color:var(--ink-mute);padding-top:6px;}
+  .tl-role{font-family:var(--font-display);font-weight:700;font-size:2.1rem;letter-spacing:-.01em;}
+  .tl-org{font-family:var(--font-mono);font-size:1.1rem;color:var(--teal);font-weight:700;margin-top:6px;}
+  .tl-pt{padding-left:34px;position:relative;font-size:1.3rem;color:var(--ink-soft);line-height:1.5;margin-top:14px;}
+  .tl-pt::before{content:"✱";position:absolute;left:0;color:var(--orange);}
+
+  .skill-grp{background:var(--card);border:2px solid var(--ink);border-radius:var(--r-xl);padding:36px;box-shadow:8px 8px 0 var(--ink);}
+  .skill-grp h3{font-family:var(--font-display);font-weight:700;font-size:1.9rem;letter-spacing:-.01em;margin:0 0 18px;}
+  .skill-grp .ico{width:60px;height:60px;border-radius:18px;border:2px solid var(--ink);display:grid;place-items:center;font-size:1.8rem;margin-bottom:18px;}
+
+  /* ============================ slide entrance ============================ */
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .anim-up{animation:rise .6s cubic-bezier(.22,.61,.36,1) both;}
+    [data-deck-active] .anim-up.d1{animation-delay:.12s;}
+    [data-deck-active] .anim-up.d2{animation-delay:.24s;}
+    [data-deck-active] .anim-up.d3{animation-delay:.36s;}
+    @keyframes rise{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+  }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 · TITLE ============================================================ -->
+  <section class="slide" data-label="Cover" style="justify-content:center;">
+    <img class="mark-deco" src="../assets/mark.svg" style="width:520px;right:-120px;top:-120px;">
+    <img class="mark-deco" src="../assets/mark.svg" style="width:340px;left:-90px;bottom:-90px;opacity:.08;">
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:center;flex:1;">
+      <div>
+        <div class="s-kicker anim-up">Portfolio · 2026</div>
+        <h1 class="s-title anim-up d1" style="margin-top:30px;max-width:18ch;font-size:8rem;">Hi, I'm <em>Dhefi</em>.</h1>
+        <p class="s-sub anim-up d2" style="margin-top:34px;max-width:24ch;">Industrial &amp; Organizational Psychology — helping companies hire, support &amp; understand their people.</p>
+      </div>
+      <div class="anim-up d2" style="position:relative;">
+        <div style="border:5px solid var(--ink);border-radius:var(--r-xl);overflow:hidden;box-shadow:14px 14px 0 var(--ink);background:var(--teal);">
+          <img src="../assets/dhefi-warm.png" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;">
+        </div>
+        <div class="pill green anim-up d3" style="position:absolute;left:-26px;bottom:46px;box-shadow:6px 6px 0 var(--ink);"><span style="color:var(--teal);font-size:1.3rem;">●</span> AVAILABLE Q3 2026</div>
+      </div>
+    </div>
+    <div class="s-foot">
+      <div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div>
+      <div class="s-pageno">01 / 08</div>
+    </div>
+  </section>
+
+  <!-- 02 · ABOUT ============================================================ -->
+  <section class="slide card-bg" data-label="About">
+    <div class="s-kicker anim-up">About</div>
+    <h2 class="s-title anim-up d1" style="font-size:5.5rem;margin-top:24px;max-width:22ch;">Psychology graduate. <em>People person.</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px;flex:1;">
+      <div class="anim-up d2" style="font-size:1.5rem;line-height:1.6;color:var(--ink-2);">
+        <p style="margin:0 0 24px;">Bachelor of Psychology from <strong>Universitas Jenderal Achmad Yani</strong>, concentration in <strong>Industrial &amp; Organizational Psychology</strong>.</p>
+        <p style="margin:0 0 24px;">Graduated <strong>Best Graduate Student</strong> of my cohort with a 3.73 GPA.</p>
+        <p style="margin:0;">I'm drawn to the careful, human parts of HR — screening, interviews, assessments — where accuracy and empathy both matter.</p>
+      </div>
+      <div class="anim-up d3" style="display:flex;flex-direction:column;gap:18px;justify-content:center;">
+        <div style="border-left:5px solid var(--orange);padding:6px 0 6px 28px;"><div class="stat-label">Based in</div><div style="font-family:var(--font-display);font-weight:700;font-size:2.2rem;">Padalarang, West Bandung</div></div>
+        <div style="border-left:5px solid var(--teal);padding:6px 0 6px 28px;"><div class="stat-label">Focus</div><div style="font-family:var(--font-display);font-weight:700;font-size:2.2rem;">Recruitment · Testing · HR Ops</div></div>
+        <div style="border-left:5px solid var(--gold);padding:6px 0 6px 28px;"><div class="stat-label">Currently</div><div style="font-family:var(--font-display);font-weight:700;font-size:2.2rem;">Open to full-time HR roles</div></div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">02 / 08</div></div>
+  </section>
+
+  <!-- 03 · STATS ============================================================ -->
+  <section class="slide" data-label="By the numbers">
+    <div class="s-kicker anim-up">By the numbers</div>
+    <h2 class="s-title anim-up d1" style="font-size:5rem;margin-top:20px;">A year of people operations</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-top:80px;flex:1;align-content:center;">
+      <div class="anim-up d2"><div class="num orange" style="font-size:9rem;">100<span style="font-size:6rem;">+</span></div><div class="stat-label" style="margin-top:18px;">Resumes screened</div></div>
+      <div class="anim-up d2"><div class="num teal" style="font-size:9rem;">61</div><div class="stat-label" style="margin-top:18px;">Employees · payroll</div></div>
+      <div class="anim-up d3"><div class="num gold" style="font-size:9rem;">60<span style="font-size:6rem;">%</span></div><div class="stat-label" style="margin-top:18px;">Faster documentation</div></div>
+      <div class="anim-up d3"><div class="num pink" style="font-size:9rem;">50</div><div class="stat-label" style="margin-top:18px;">Contracts shipped</div></div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">03 / 08</div></div>
+  </section>
+
+  <!-- 04 · EXPERIENCE ====================================================== -->
+  <section class="slide" data-label="Experience">
+    <div class="s-kicker anim-up">Experience · 2024–2026</div>
+    <h2 class="s-title anim-up d1" style="font-size:5rem;margin-top:20px;">Where I've worked</h2>
+    <div style="margin-top:40px;flex:1;display:flex;flex-direction:column;">
+      <div class="tl-row anim-up d2">
+        <div class="tl-when">Aug 2025 — Present</div>
+        <div>
+          <div class="tl-role">Freelance Interviewer</div>
+          <div class="tl-org">PT. Kharisma Sejahtera Lestari</div>
+          <div class="tl-pt">25 structured field interviews · digitised records ~60% faster</div>
+        </div>
+      </div>
+      <div class="tl-row anim-up d2">
+        <div class="tl-when">Oct 2025 — Apr 2026</div>
+        <div>
+          <div class="tl-role">Human Resource Staff Intern</div>
+          <div class="tl-org">MagangHub · PT. Santai Berkualitas Syberindo</div>
+          <div class="tl-pt">100+ resumes screened · timesheet &amp; payroll for 61 · 50 contracts shipped</div>
+        </div>
+      </div>
+      <div class="tl-row anim-up d3">
+        <div class="tl-when">Feb 2024 — Jun 2024</div>
+        <div>
+          <div class="tl-role">Human Capital Officer Intern</div>
+          <div class="tl-org">MSIB Batch 6 · PT. Combiphar</div>
+          <div class="tl-pt">Licensing control · training digitisation · candidate &amp; productivity interviews</div>
+        </div>
+      </div>
+      <div class="tl-row anim-up d3" style="border-bottom:2px solid var(--hairline);">
+        <div class="tl-when">Feb 2024 — Aug 2024</div>
+        <div>
+          <div class="tl-role">Associate Psychological Tester Intern</div>
+          <div class="tl-org">PRDC UNJANI</div>
+          <div class="tl-pt">Certified tester · administered online assessments for 30–40 participants</div>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">04 / 08</div></div>
+  </section>
+
+  <!-- 05 · SKILLS ========================================================== -->
+  <section class="slide card-bg" data-label="Skills">
+    <div class="s-kicker anim-up">What I do</div>
+    <h2 class="s-title anim-up d1" style="font-size:5rem;margin-top:20px;">Skills, grouped how I use them</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:60px;flex:1;align-content:center;">
+      <div class="skill-grp anim-up d1">
+        <div class="ico" style="background:var(--orange-soft);">📋</div>
+        <h3>Recruitment</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span class="pill">Resume screening</span>
+          <span class="pill">Initial interviews</span>
+          <span class="pill">Experience interviews</span>
+          <span class="pill">Candidate follow-up</span>
+          <span class="pill">Contract preparation</span>
+        </div>
+      </div>
+      <div class="skill-grp anim-up d2" style="background:var(--teal);color:var(--paper);">
+        <div class="ico" style="background:var(--gold-soft);color:var(--ink);">🧠</div>
+        <h3 style="color:var(--paper);">Psychological assessment</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span class="pill" style="background:var(--paper);">Test administration</span>
+          <span class="pill" style="background:var(--paper);">Online testing</span>
+          <span class="pill" style="background:var(--paper);">Interview documentation</span>
+          <span class="pill" style="background:var(--paper);">Behavioral observation</span>
+        </div>
+      </div>
+      <div class="skill-grp anim-up d3">
+        <div class="ico" style="background:var(--pink-soft);">📊</div>
+        <h3>HR operations</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span class="pill">Timesheet &amp; overtime</span>
+          <span class="pill">Payroll support</span>
+          <span class="pill">Document control</span>
+          <span class="pill">Data entry &amp; reporting</span>
+          <span class="pill">Microsoft Office</span>
+          <span class="pill">Google Workspace</span>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">05 / 08</div></div>
+  </section>
+
+  <!-- 06 · ACHIEVEMENTS ==================================================== -->
+  <section class="slide" data-label="Achievements">
+    <div class="s-kicker anim-up">Recognition</div>
+    <h2 class="s-title anim-up d1" style="font-size:5rem;margin-top:20px;">A couple of proud moments</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:60px;flex:1;align-content:center;">
+      <div class="anim-up d1" style="background:var(--gold);border:3px solid var(--ink);border-radius:var(--r-xl);padding:54px;box-shadow:14px 14px 0 var(--ink);">
+        <div style="font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);">2025 · Award</div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:4.6rem;line-height:1;letter-spacing:-.02em;margin:24px 0 22px;">Best Graduate Student</div>
+        <div style="font-size:1.4rem;color:var(--ink-2);line-height:1.5;">Lulusan Terbaik S-1 Psikologi — top of the Bachelor of Psychology cohort at Universitas Jenderal Achmad Yani.</div>
+      </div>
+      <div class="anim-up d2" style="background:var(--card);border:3px solid var(--ink);border-radius:var(--r-xl);padding:54px;box-shadow:14px 14px 0 var(--ink);">
+        <div style="font-family:var(--font-mono);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);">2024 · Publication</div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:3.4rem;line-height:1.05;letter-spacing:-.02em;margin:24px 0 22px;font-style:italic;color:var(--ink);">Gaya Kepemimpinan Terhadap Perilaku Inovatif Karyawan di PT. X</div>
+        <div style="font-size:1.4rem;color:var(--ink-soft);line-height:1.5;">A study of how leadership style shapes innovative behaviour among employees.</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">06 / 08</div></div>
+  </section>
+
+  <!-- 07 · QUOTE / PHILOSOPHY ============================================== -->
+  <section class="slide teal" data-label="Philosophy">
+    <img class="mark-deco" src="../assets/mark.svg" style="width:580px;right:-160px;bottom:-160px;opacity:.18;">
+    <div class="s-kicker anim-up" style="color:var(--gold);">How I work</div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div class="anim-up d1" style="font-family:var(--font-display);font-weight:800;font-size:18rem;line-height:.5;color:var(--gold);margin-bottom:-30px;">&ldquo;</div>
+      <blockquote class="anim-up d2" style="font-family:var(--font-display);font-weight:700;font-size:5.5rem;line-height:1.08;letter-spacing:-.02em;margin:0;max-width:26ch;">
+        Good hiring isn't about more data. It's about <span style="font-style:italic;color:var(--gold);">trusting</span> the data you keep.
+      </blockquote>
+      <div class="anim-up d3" style="font-family:var(--font-mono);font-size:1.3rem;letter-spacing:.06em;margin-top:50px;">— DHEFI DWICAHYANI · HR &amp; PSYCHOLOGICAL TESTING</div>
+    </div>
+    <div class="s-foot"><div class="s-brand"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot">.</span></div><div class="s-pageno">07 / 08</div></div>
+  </section>
+
+  <!-- 08 · CLOSING / CONTACT =============================================== -->
+  <section class="slide orange" data-label="Contact">
+    <img class="mark-deco" src="../assets/mark.svg" style="width:680px;right:-180px;top:50%;transform:translateY(-50%);opacity:.16;">
+    <div class="s-kicker anim-up" style="color:var(--ink);">Let's talk</div>
+    <h2 class="s-title anim-up d1" style="margin-top:40px;color:var(--white);max-width:18ch;font-size:7rem;">Let's make<br>something <em style="color:var(--ink);">human</em>.</h2>
+    <div class="anim-up d2" style="display:grid;grid-template-columns:repeat(3,auto);gap:64px;margin-top:60px;font-family:var(--font-mono);font-size:1.55rem;">
+      <div><div style="opacity:.75;font-size:1rem;letter-spacing:.08em;">EMAIL</div><div style="margin-top:6px;">dhefidwi3@gmail.com</div></div>
+      <div><div style="opacity:.75;font-size:1rem;letter-spacing:.08em;">LINKEDIN</div><div style="margin-top:6px;">linkedin.com/in/dhefidwi</div></div>
+      <div><div style="opacity:.75;font-size:1rem;letter-spacing:.08em;">PHONE</div><div style="margin-top:6px;">0851-5631-3670</div></div>
+    </div>
+    <div class="anim-up d3" style="margin-top:60px;display:flex;align-items:center;gap:24px;">
+      <img src="../assets/dhefi-circle.png" style="width:110px;height:110px;border-radius:999px;border:5px solid var(--ink);object-fit:cover;box-shadow:8px 8px 0 var(--ink);">
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:2.6rem;color:var(--white);">Dhefi Dwicahyani Fikri, S.Psi</div>
+        <div style="font-family:var(--font-mono);font-size:1.15rem;color:rgba(255,255,255,.85);">I/O Psychology · Human Resources · Bandung, ID</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-brand" style="color:var(--white);"><img src="../assets/mark.svg" alt="">Dhefi<span class="dot" style="color:var(--ink);">.</span></div><div class="s-pageno" style="color:rgba(255,255,255,.85);">08 / 08</div></div>
+  </section>
+
+</deck-stage>
+
+<script src="../deck/deck-stage.js"></script>
+</body>
+</html>

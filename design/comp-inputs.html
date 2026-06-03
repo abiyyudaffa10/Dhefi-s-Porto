@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;background:var(--paper);font-family:var(--font-body);color:var(--ink);padding:24px 30px;display:flex;gap:20px;flex-wrap:wrap;}
+  .field{display:flex;flex-direction:column;gap:7px;min-width:220px;flex:1;}
+  label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);font-weight:700;}
+  input,select{font-family:var(--font-body);font-size:15px;color:var(--ink);background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r-md);padding:12px 14px;outline:none;}
+  input::placeholder{color:var(--ink-mute);}
+  .focus{box-shadow:var(--shadow-pop);border-color:var(--ink);}
+  .hint{font-size:12px;color:var(--ink-mute);}
+</style>
+<body>
+  <div class="field"><label>Your name</label><input placeholder="Dhefi Dwicahyani"></div>
+  <div class="field"><label>Email — focus state</label><input class="focus" value="dhefidwi3@gmail.com"><span class="hint">Orange pop-shadow on focus.</span></div>
+  <div class="field"><label>Role</label><select><option>Recruitment / HR</option><option>Psychological Testing</option></select></div>
+</body>

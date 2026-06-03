@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;background:var(--paper);font-family:var(--font-mono);color:var(--ink);padding:30px 34px;}
+  .row{display:flex;gap:30px;align-items:center;flex-wrap:wrap;}
+  .item{text-align:center;}
+  .box{width:120px;height:64px;background:var(--card);border:1.5px solid var(--ink);border-radius:16px;display:grid;place-items:center;}
+  .nm{font-size:11px;margin-top:14px;font-weight:700;}
+  .v{font-size:10px;color:var(--ink-mute);}
+</style>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-hard)"></div><div class="nm">hard</div><div class="v">3px 3px 0 ink</div></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-hard-lg)"></div><div class="nm">hard-lg</div><div class="v">6px 6px 0 ink</div></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-pop)"></div><div class="nm">pop</div><div class="v">4px 4px 0 orange</div></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-soft);border-color:var(--hairline)"></div><div class="nm">soft</div><div class="v">app UI</div></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-soft-lg);border-color:var(--hairline)"></div><div class="nm">soft-lg</div><div class="v">overlays</div></div>
+  </div>
+</body>

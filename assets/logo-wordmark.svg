@@ -1,0 +1,19 @@
+<svg width="380" height="120" viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dhefi.">
+  
+  <g transform="translate(8 4)">
+    
+    <g transform="translate(0 22)">
+      <g transform="scale(0.62)">
+        <g transform="translate(60 60)" fill="#E8572A">
+          <rect x="-7" y="-50" width="14" height="40" rx="7"></rect>
+          <rect x="-7" y="10" width="14" height="40" rx="7"></rect>
+          <g transform="rotate(90)"><rect x="-7" y="-50" width="14" height="40" rx="7"></rect><rect x="-7" y="10" width="14" height="40" rx="7"></rect></g>
+          <g transform="rotate(45)"><rect x="-6" y="-46" width="12" height="36" rx="6"></rect><rect x="-6" y="10" width="12" height="36" rx="6"></rect></g>
+          <g transform="rotate(135)"><rect x="-6" y="-46" width="12" height="36" rx="6"></rect><rect x="-6" y="10" width="12" height="36" rx="6"></rect></g>
+          <circle r="13" fill="#1C1916"></circle><circle r="5" fill="#F4ECDB"></circle>
+        </g>
+      </g>
+    </g>
+    <text x="86" y="82" font-family="&#39;Bricolage Grotesque&#39;, sans-serif" font-weight="800" font-size="76" letter-spacing="-3" fill="#1C1916">Dhefi<tspan fill="#E8572A">.</tspan></text>
+  </g>
+</svg>

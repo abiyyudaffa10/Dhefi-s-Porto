@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;background:var(--paper);font-family:var(--font-body);color:var(--ink);padding:24px 30px;display:flex;flex-direction:column;gap:18px;}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .pill{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.04em;border-radius:var(--r-pill);padding:6px 14px;border:1.5px solid var(--ink);}
+  .tag{background:var(--orange-soft);} .tag2{background:var(--teal-soft);} .tag3{background:var(--gold-soft);} .tag4{background:var(--pink-soft);}
+  .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:13px;font-weight:700;}
+  .dot{font-size:15px;}
+  .av{color:var(--teal);} .bk{color:var(--gold);} .no{color:var(--ink-mute);}
+</style>
+<body>
+  <div class="row">
+    <span class="pill tag">RECRUITMENT</span>
+    <span class="pill tag2">PSYCH TESTING</span>
+    <span class="pill tag3">HR ADMIN</span>
+    <span class="pill tag4">INTERVIEWS</span>
+  </div>
+  <div class="row" style="gap:28px">
+    <span class="status av"><span class="dot">●</span> AVAILABLE</span>
+    <span class="status bk"><span class="dot">◐</span> BOOKED TIL AUG</span>
+    <span class="status no"><span class="dot">○</span> NOT TAKING WORK</span>
+  </div>
+</body>
