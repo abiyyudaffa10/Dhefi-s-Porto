@@ -128,6 +128,28 @@
   .ach p{margin:0;font-size:.97rem;color:var(--ink-soft);line-height:1.55;}
   @media(max-width:680px){.ach-grid{grid-template-columns:1fr;}}
 
+  /* ---- skills ---- */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .skill-card{border:var(--bw) solid var(--ink);border-radius:var(--r-lg);padding:26px 26px 28px;background:var(--card);box-shadow:var(--shadow-hard);}
+  .skill-card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;border:1.5px solid var(--ink);margin-bottom:16px;background:var(--paper);}
+  .skill-card .ico svg{width:22px;height:22px;}
+  .skill-card h3{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin:0 0 16px;letter-spacing:-.01em;}
+  .skill-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .skill-card li{display:flex;align-items:center;gap:9px;font-size:.95rem;color:var(--ink-soft);line-height:1.4;}
+  .skill-card li svg{color:var(--teal);flex-shrink:0;}
+  @media(max-width:780px){.skills-grid{grid-template-columns:1fr;}}
+
+  /* ---- work modal ---- */
+  .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(28,25,21,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:24px;animation:folkFade .2s ease both;}
+  .modal{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:var(--r-lg);box-shadow:var(--shadow-hard-lg);max-width:540px;width:100%;padding:38px 38px 40px;animation:folkRise .3s var(--ease-funk) both;}
+  .modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:999px;border:1.5px solid var(--ink);background:var(--card);display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:background var(--dur-fast),color var(--dur-fast);}
+  .modal-close:hover{background:var(--orange);color:var(--white);}
+  .modal-tag{font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);}
+  .modal h3{font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.01em;margin:10px 0 6px;line-height:1.12;}
+  .modal-meta{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-mute);margin-bottom:18px;}
+  .modal p{margin:0;font-size:1.02rem;color:var(--ink-2);line-height:1.65;}
+  @keyframes folkFade{from{opacity:0;}to{opacity:1;}}
+
   /* ---- contact ---- */
   .contact{background:var(--ink-bg);color:var(--on-dark);border-radius:var(--r-xl);padding:64px 56px;position:relative;overflow:hidden;}
   .contact h2{color:var(--on-dark);}

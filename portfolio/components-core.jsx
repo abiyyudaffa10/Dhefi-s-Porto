@@ -23,7 +23,7 @@ function Brand({ size = 30 }) {
 function Nav() {
   const [open, setOpen] = React.useState(false);
   const links = [
-    ['Work', '#work'], ['About', '#about'], ['Experience', '#experience'], ['Contact', '#contact'],
+    ['Work', '#work'], ['About', '#about'], ['Skills', '#skills'], ['Experience', '#experience'], ['Contact', '#contact'],
   ];
   return (
     <nav className="nav" id="top">

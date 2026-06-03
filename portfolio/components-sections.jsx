@@ -3,8 +3,9 @@
 const THUMB_COLORS = ['var(--teal)', 'var(--orange)', 'var(--gold)', 'var(--pink)', 'var(--teal-deep)', 'var(--ink-bg)'];
 
 const WORK = [
-  { tag: 'HR OPS · PLATFORM', title: 'The HR Intervention System', org: 'MagangHub', year: '2025–26',
-    desc: 'Built a personal tracking platform to manage 100+ candidates — logging fit scores, pipeline stages, and progress notes to make screening faster and reporting more accurate.' },
+  { tag: 'RECRUITMENT · ATS', title: 'Self-built ATS — Candidate Tracker', org: 'MagangHub', year: '2025–26',
+    desc: 'Built my own ATS (Applicant Tracking System) to manage 100+ candidates — tracking fit, pipeline stage, and progress so screening reports came together far faster.',
+    detail: 'During my internship I was screening 100+ resumes manually, so I built a simple internal platform — essentially my own ATS (Applicant Tracking System) — to track which candidates were progressing, who fit the role, and where each one sat in the pipeline. It replaced scattered notes with one organised view and made my screening reports much faster and more accurate to put together. Most HR teams pay for tools like this; I understood the need well enough to build one myself.' },
   { tag: 'PAYROLL · DATA', title: 'Timesheet & overtime for 61', org: 'PT. Santai Berkualitas', year: '2025–26',
     desc: 'Compiled monthly timesheet and overtime cost data for 61 employees to keep payroll accurate and on time.' },
   { tag: 'FIELD RESEARCH', title: 'Community interviews, Sindanglaut', org: 'PT. Kharisma Sejahtera', year: '2025',
@@ -57,7 +58,7 @@ function Hero() {
         </div>
         <div className="hero-photo reveal">
           <div className="frame"><img src="../assets/dhefi-warm.png" alt="Dhefi Dwicahyani" /></div>
-          <div className="badge badge-status"><span className="d">●</span> Available · Q3 2026</div>
+          <div className="badge badge-status"><span className="d">●</span> Available · Q2 2026</div>
           <div className="badge badge-loc"><Icon name="map-pin" size={14} /> Padalarang</div>
         </div>
       </div>
@@ -80,7 +81,28 @@ function Stats() {
   );
 }
 
+function WorkModal({ item, onClose }) {
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [onClose]);
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="Close"><Icon name="x" size={20} /></button>
+        <span className="modal-tag">{item.tag}</span>
+        <h3>{item.title}</h3>
+        <div className="modal-meta">{item.org} · {item.year}</div>
+        <p>{item.detail || item.desc}</p>
+      </div>
+    </div>
+  );
+}
+
 function WorkGrid() {
+  const [active, setActive] = React.useState(null);
   return (
     <section id="work">
       <div className="wrap">
@@ -88,7 +110,7 @@ function WorkGrid() {
           action={<Button variant="ghost" href="#contact" icon="arrow-up-right">Full CV</Button>} />
         <div className="work-grid">
           {WORK.map((w, i) => (
-            <article className="work-card reveal" key={i}>
+            <article className="work-card reveal" key={i} onClick={() => setActive(w)}>
               <div className="work-thumb" style={{ background: THUMB_COLORS[i % THUMB_COLORS.length] }}>
                 <span className="tag">{w.tag}</span>
               </div>
@@ -104,6 +126,7 @@ function WorkGrid() {
           ))}
         </div>
       </div>
+      {active && <WorkModal item={active} onClose={() => setActive(null)} />}
     </section>
   );
 }
@@ -124,6 +147,33 @@ function About() {
           <div className="chips">
             {chips.map(c => <span className="chip" key={c}>{c}</span>)}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const SKILLS = [
+  { group: 'HR & Recruitment', icon: 'users', items: ['Resume screening', 'Candidate tracking (ATS)', 'Initial & experience interviews', 'Contract preparation', 'Onboarding', 'HR administration'] },
+  { group: 'Assessment', icon: 'clipboard-check', items: ['Psychological testing', 'Online test administration', 'Behavioral observation', 'Interview documentation'] },
+  { group: 'Tools & Software', icon: 'wrench', items: ['Microsoft Excel', 'Google Workspace', 'Microsoft Office', 'Self-built ATS', 'Data entry & reporting', 'Document control'] },
+];
+
+function Skills() {
+  return (
+    <section id="skills">
+      <div className="wrap">
+        <SectionHead kicker="Capabilities" title="Skills & tools I work with" />
+        <div className="skills-grid">
+          {SKILLS.map((s, i) => (
+            <div className="skill-card reveal" key={i}>
+              <div className="ico"><Icon name={s.icon} size={22} /></div>
+              <h3>{s.group}</h3>
+              <ul>
+                {s.items.map(it => <li key={it}><Icon name="check" size={15} />{it}</li>)}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -176,4 +226,4 @@ function Achievements() {
   );
 }
 
-Object.assign(window, { Hero, Stats, WorkGrid, About, Experience, Achievements });
+Object.assign(window, { Hero, Stats, WorkGrid, About, Skills, Experience, Achievements });

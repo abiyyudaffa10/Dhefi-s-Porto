@@ -14,7 +14,7 @@ function Contact() {
               <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(2rem,3.6vw,3rem)', letterSpacing: '-.02em', margin: '8px 0 0' }}>
                 Looking for someone who gets people <em style={{ fontStyle: 'italic', color: 'var(--orange)' }}>and</em> process?
               </h2>
-              <p className="lead">I'm taking on one new HR / people-ops role for Q3 2026. Tell me a little about your team and I'll get back to you.</p>
+              <p className="lead">I'm taking on one new HR / people-ops role for Q2 2026. Tell me a little about your team and I'll get back to you.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 28, fontFamily: 'var(--font-mono)', fontSize: '.9rem' }}>
                 <a href="mailto:dhefidwi3@gmail.com" style={{ display: 'flex', gap: 10, alignItems: 'center', color: 'var(--on-dark)' }}><Icon name="mail" size={18} color="var(--orange)" /> dhefidwi3@gmail.com</a>
                 <a href="https://linkedin.com/in/dhefidwi" target="_blank" rel="noreferrer" style={{ display: 'flex', gap: 10, alignItems: 'center', color: 'var(--on-dark)' }}><Icon name="external-link" size={18} color="var(--orange)" /> linkedin.com/in/dhefidwi</a>
@@ -67,6 +67,7 @@ function App() {
       <Stats />
       <WorkGrid />
       <About />
+      <Skills />
       <Experience />
       <Achievements />
       <Contact />
