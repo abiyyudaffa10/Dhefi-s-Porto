@@ -57,7 +57,7 @@ function Hero() {
           </div>
         </div>
         <div className="hero-photo reveal">
-          <div className="frame"><img src="../assets/dhefi-warm.png" alt="Dhefi Dwicahyani" /></div>
+          <div className="frame"><img src="../assets/Dhefiberdiri.jpg" alt="Dhefi Dwicahyani" /></div>
           <div className="badge badge-status"><span className="d">●</span> Available · Q2 2026</div>
           <div className="badge badge-loc"><Icon name="map-pin" size={14} /> Padalarang</div>
         </div>
@@ -136,7 +136,7 @@ function About() {
   return (
     <section id="about">
       <div className="wrap about-grid">
-        <div className="about-photo reveal"><img src="../assets/dhefi-warm.png" alt="Dhefi Dwicahyani" /></div>
+        <div className="about-photo reveal"><img src="../assets/Dhefiduduk.jpg" alt="Dhefi Dwicahyani" /></div>
         <div className="about-body reveal">
           <div className="kicker">About</div>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(1.9rem,3.2vw,2.7rem)', letterSpacing: '-.02em', margin: '8px 0 18px' }}>
