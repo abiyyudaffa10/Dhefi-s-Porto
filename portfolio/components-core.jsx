@@ -77,7 +77,7 @@ function Footer() {
         <Brand size={26} />
         <div className="foot-links">
           <a href="mailto:dhefidwi3@gmail.com">Email</a>
-          <a href="https://linkedin.com/in/dhefidwi" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://linkedin.com/in/dhefi-dwicahyani-fikri-b5372721b/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="#work">Work</a>
           <a href="#top">Top ↑</a>
         </div>
